@@ -57,7 +57,9 @@ function draw() {
   // big triangle
   fill(0, 135, 149);
   // triangle(165, 170, -50, 350, 350, 450);
-  triangle(canvas.width/2, canvas.height/3, canvas.width/10, canvas.height, canvas.width/1.5, canvas.height);
+  // triangle(canvas.width/2, canvas.height/3, canvas.width/10, canvas.height, canvas.width/1.5, canvas.height);
+  triangle(canvas.width/5, canvas.height/5, canvas.width/10, canvas.height/2, canvas.width/2.2, canvas.height);
+  // print(canvas.width);
 
   // left-bottom triangle (to blend canvas and pyramid) 
   strokeWeight(0);
@@ -65,7 +67,7 @@ function draw() {
 
   // small shady triangle
   fill(0, 97, 113);
-  triangle(canvas.width/2, canvas.height/3, canvas.width/1.5, canvas.height, canvas.width, canvas.height);
+  triangle(canvas.width/5, canvas.height/5, canvas.width/2.2, canvas.height, canvas.width/4, canvas.height);
 }
 
 function star(x, y, radius1, radius2, npoints) {
