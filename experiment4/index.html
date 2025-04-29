@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- This title is used for tabs and bookmarks -->
+	<title>Experiment 04 - Infinite Worlds</title>
+
+	<!-- Use UTF character set, a good idea with any webpage -->
+	<meta charset="UTF-8" />
+	<!-- Set viewport so page remains consistently scaled w narrow devices -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<!-- Include CSS file, including a site-wide CSS and for this particular page -->
+	<link rel="stylesheet" type="text/css" href="../css/site.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<!-- Load jQuery library -->
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous"></script>
+	<!-- Load p5.js library -->
+	<script src="https://cdn.jsdelivr.net/npm/p5@1.9.2/lib/p5.js"></script>
+
+	<!-- Link to javascript files - DEFER waits until all elements are rendered -->
+    <script type="text/javascript" src="../js/site.js" DEFER></script>
+	<!-- Use me for a JavaScript OOP Project -->
+	<!-- <script type="text/javascript" src="./js/project.js" DEFER></script> -->
+	<!-- Use me for a p5.js project -->
+	<script type="text/javascript" src="./js/sketch.js" DEFER></script>
+</head>
+<body>
+	<!-- Style this page by changing the CSS in ../css/site.css or css/experiment.css -->
+	<main id="content">
+		<section>
+
+			<h1>Experiment 04 - Infinite Worlds</h1>
+
+			<div class="minor-section">
+				<button id="reseedButton">
+					reseed
+				</button>
+				<span id="seedReport"></span><br>
+				<span id="canvasContainer" style="margin: 10px;"></span>
+				<span id="canvasContainerTwo" style="margin: 10px;"></span><br>
+				<!-- <span id="canvasContainerThree" style="margin: 10px;"></span><br> -->
+    			<!-- <textarea cols="20" rows="20" id="asciiBox" style="opacity: 0.5; letter-spacing: 1ex; width: 320px; margin: 10px; font-family: monospace;"></textarea> -->
+				<!-- <textarea cols="20" rows="20" id="asciiBoxTwo" style="opacity: 0.5; letter-spacing: 1ex; width: 320px; margin: 10px; font-family: monospace;"></textarea> -->
+				<!-- <textarea cols="20" rows="20" id="asciiBoxThree" style="opacity: 0.5; letter-spacing: 1ex; width: 320px; margin: 10px; font-family: monospace;"></textarea> -->
+			</div>
+
+			<div class="minor-section">
+				<h2>Description</h2>
+				<p>In this project, we use a generative context-based map creator that stores map values in the form of a string-grid. By taking into account what tiles were placed next to each other, we were able to add tile interactions like walls.</p>
+				<p>For dungeon generation, the map is also populated by a number of extra chambers, which are then connected to the central chamber using a simple pathing algorythem. For the overworld map, all features are generated based on a simple noise function that acts like a heightmap for the final product.</p>
+			</div>
+
+			<div class="minor-section">
+				<h2>Technical</h2>
+				<p>The maping model used allows the user to directly edit the map that had been gererated, allowing for real-time feedback. It should be noted that, due to the way that the program checks for wall geometry, editing in non-standard floor plans may result in a buggy final render.</p>
+				<p>The adjacency algorhythm is rather simple, wherein it takes the four ajacent tiles, and encodes whether they are the target tile into the output using a four-digit binary number. This allows for the wall, shore-line, and loot generation to act the way that it does.</p>
+				<p>The pathing algorhythm that is used to ensure all dungeon rooms are connected is super basic, simply traveling in two straight lines to go from the new room's geometric center to that of the main hall. If you're curious, you can see any generated paths as denoted by a '+' on the map.</p>
+			</div>
+
+			<div class="minor-section">
+				<h2>Reflection</h2>
+				<p>Campbell Hunter: I feel like I did a fairly good job with the assignment reletive to what I was looking to achieve. I'm honestly pretty proud of the way I implemented all of the logistical elements, and I'm hoping to work with something simular in the future so that I can get some more practice in this area. My only failing is that, while it does work as is, there are still some incongruencies between the text map and the rendered map due to me checking for chests and gems where walls should be. </p>
+				<p>Phineas Asmelash: Learning about bitmasking was a fun experience in this project. I think I did pretty well with this project. Especially with the variety of tilesets I integrated into the scene. Playing around with those different textures was nice, but I think I could have been more methodical with how I approached indexing the tilemap. It took me a while to figure out that I can just put a grid overlay on the tilemap to find the indexing of each tile element in the tile map, so that was some wasted time being inefficient. In the future, I would like to improve two things about this project. The first is to abstract the math away from the codebase by decoupling the long, mathy lines of code and putting them in their own function. This would especially help with the readability of the generateGrid() function. The second one is to come up with a more cohesive set of tilesets to create an overworld tile map to further improve the aesthetics of the project.</p>
+			</div>
+
+		</section>
+		<nav id="links" class="minor-section">
+			<!-- Put link back to homepage here. -->
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+            </ul>
+		</nav>
+	</main>
+</body>
+</html>
