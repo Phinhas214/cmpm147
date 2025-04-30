@@ -27,6 +27,7 @@
 	<!-- Use me for a p5.js project -->
 	<script type="text/javascript" src="./js/xxhash.min.js" DEFER></script>
 	<script type="text/javascript" src="./js/Tile.js" DEFER></script>
+	<script type="text/javascript" src="./js/Teal.js" DEFER></script>
 	<script type="text/javascript" src="./js/sketch.js" DEFER></script>
 </head>
 <body>
@@ -37,11 +38,10 @@
 			<h1>Experiment 04 - Infinite Worlds</h1>
 
 			<div class="minor-section">
-				<button id="reseedButton">
-					reseed
-				</button><br>
-				<span id="canvasContainer" style="margin: 10px;"></span>
-				<span id="canvasContainerTwo" style="margin: 10px; width: 800px; height: 400px;"></span><br>
+				<span id="canvasContainer" style="margin: 10px; width: 100px; height: 100px;"></span>
+				<span id="canvasContainerTwo" style="margin: 10px; width: 100px; height: 100px;"></span><br>
+				<span id="labelContainer" style="margin: 10px;"></span>
+				<span id="labelContainerTwo" style="margin: 10px;"></span>
 				<!-- <span id="canvasContainerThree" style="margin: 10px;"></span><br> -->
     			<!-- <textarea cols="20" rows="20" id="asciiBox" style="opacity: 0.5; letter-spacing: 1ex; width: 320px; margin: 10px; font-family: monospace;"></textarea> -->
 				<!-- <textarea cols="20" rows="20" id="asciiBoxTwo" style="opacity: 0.5; letter-spacing: 1ex; width: 320px; margin: 10px; font-family: monospace;"></textarea> -->
@@ -56,18 +56,20 @@
 
 			<div class="minor-section">
 				<h2>Description</h2>
-				<p>Enter description here.</p>
+				<p>Our worlds are largely based off of Truchet tiles which can be used to create interesting patterns based off of the negative space in between each colored region. Our first world is utilizing circular paths that interconnect and are entirely monochrome. The second is utilizing right triangles that occupy different sections and angles of their tiles to create their negative space patterns. </p>
 			</div>
 
 			<div class="minor-section">
 				<h2>Technical</h2>
-				<p>Enter Technical here.</p>
+				<p>The first world has each tile randomly assigned a type utilizing the hash provided in the example, and that type is then utilized to determine how they interconnect with the surround tile types. A tile either has black circles drawn in its corners, or white circles. When the tiles check their surroundings to determine how to be drawn they create their circular patterns. </p>
+				<p>The second world has each tile randomly assigned a type also utilizing the hash, and each type also has a unique color. The types decide which corner of the tile they should be drawn in. As a result of not basing any logic on the tiles surroundings, the patterns are less organic and far more random to the eye.</p>
+				<p>Additionally, both worlds have an animated avatar that is used to traverse the infinite terrain and can follow footprints that are randomly generated on tiles.</p>
 			</div>
 
 			<div class="minor-section">
 				<h2>Reflection</h2>
 				<p>Campbell Hunter: While the original opus of this assignment was just us messing around with different generative tiling patterns, once we found some inspiration through those patterns, I honestly had a ton of fun. This was the first assignment that actually gave me an opportunity to bust out Procreate and draw up some spritesheets, so that alone is a huge plus. Other than that, the manner in which we collaborated on this assignment was slightly more hectic, but it felt like the final product was made larger simply because getting there took a bit more detective work (Good lord do we all need to start commenting out our code.) Whatever the case, I love my little reporter man, and I’m looking forward to working more in the realm of design and art when it comes to this course.</p>
-				<p>Phineas Asmelash: Enter reflection here.</p>
+				<p>Phineas Asmelash: Figuring out how to make the arc based truchet tiles to my liking was a big challenge. Especially when it came to shading within a closed shape. I was thinking of maybe compromising and not fully implement the shading of the truchet tiles but as I was about to move on with the project I was able to figure it out with the help of this medium article. I feel like I got lost in the creative process that I didn’t get to have enough time for the other aspects of the project (like glitch and portfolio integration). It was really nice to see my effort pay off in a different way than I’m used to when it comes to coding. What I mean by that is usually the pay off when it comes to programming is when your code finally compiles or works in the way you want it to, but with this class it’s purely visual which is a welcome change of pace. However, I need to readust sometimes and figure out when something is worth more of my effort and when it’s time to focus on something else.</p>
 				<p>Vivian Allen: I was mostly in charge of porting over Phineas’s code basis for the black and white, and triangle visuals over into the infinite generating glitch example. This is the first time I have had to significantly refactor code, and it was an interesting experience. Admittedly I was bashing my head against the wall for the first black and white world and thankfully Campbell figured it out for me, and using his work to help refactor the triangle world made a world of difference in my understanding of how to properly refactor. Other than that, we definitely need to comment more on code, so much time was spent trying to figure out what everything did or meant, and I did not help with that unfortunately. All experience for the next time though.</p>
 			</div>
 
