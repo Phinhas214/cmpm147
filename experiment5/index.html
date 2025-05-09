@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- This title is used for tabs and bookmarks -->
+	<title>Experiment 5 - Evolutionary Impressions</title>
+
+	<!-- Use UTF character set, a good idea with any webpage -->
+	<meta charset="UTF-8" />
+	<!-- Set viewport so page remains consistently scaled w narrow devices -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<!-- Include CSS file, including a site-wide CSS and for this particular page -->
+	<link rel="stylesheet" type="text/css" href="../css/site.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<!-- Load jQuery library -->
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous"></script>
+	<!-- Load p5.js library -->
+	<script src="https://cdn.jsdelivr.net/npm/p5@1.9.2/lib/p5.js"></script>
+
+	<!-- Link to javascript files - DEFER waits until all elements are rendered -->
+    <script type="text/javascript" src="../js/site.js" DEFEsR></script>
+	<!-- Use me for a p5.js project -->
+	<script type="text/javascript" src="./js/mydesign.js" DEFER></script>
+	<script type="text/javascript" src="./js/sketch.js" DEFER></script>
+</head>
+<body>
+	<!-- Style this page by changing the CSS in ../css/site.css or css/experiment.css -->
+	<main id="content">
+		<section>
+
+			<h1>Experiment 5 - Evolutionary Impressions</h1>
+
+			<div class="minor-section results">
+                <div class="results-top">
+                    <div class="image-container">
+                        <p id="original"></p>
+                        <p class="caption"></p>
+                    </div>
+                    <div class="image-container">
+                        <p id="active"></p>
+                        <p>Active Image</p>
+                    </div>
+                    <div class="image-container">
+                        <p id="best"></p>
+                        <p>Best Image</p>
+                    </div>
+                </div>
+
+                <div class="controls">
+                    <div class="controls-col1">
+                        <select id="dropper"></select>
+                        <button id="restart">
+                        restart
+                        </button>
+                        <p>
+                        Mutation rate (<span id="rate"></span>%):<br /><input
+                            id="slider"
+                            type="range"
+                            min="1"
+                            max="100"
+                            value="100"
+                        />
+                        </p>
+                    </div>
+                    <div class="controls-col2">
+                        <p>Active score: <span id="activeScore"></span></p>
+                        <p>Exploration rate: <span id="fpsCounter"></span> fps</p>
+                        <p>Best score: <span id="bestScore"></span></p>
+                    </div>
+                </div>
+
+                <div class="results-bottom">
+                    <p id="memory" data-max-items="28"></p>
+                </div>
+			</div>
+            <div class="minor-section">
+                <h2>Description</h2>
+                <p>In this programming assignment, we're building a generator that directly reads inspiring images, renders parameterized images, and adjusts its own designs to optimize an evaluation score. In our implementation, we have not only included multiple different shape types to demonstrate different executions of this iteration, but we have also included one implementation that works in full color!</p>
+                <p>While the program will eventually stumble into a satisfying solution on its own, it is recommended that the user be mindful of the selected mutation rate. At first, a high rate is ideal for finding specific permutations that better replicate the original. Yet, as you get closer to a viable output, it is best to decrease this permutation rate in order to focus your search just to a local minimum.</p>
+            </div>
+
+
+            <div class="minor-section">
+                <h2>Technical</h2>
+                <p>Our implementation starts out by populating a number of shape objects into an array, all of which are provided with a random starting position and color. Then, through a function that is able to register how "similar" this new image is to the desired one, the program is then able to store whichever permutation received the closest resemblance score, and iterate from there</p>
+                <p>Just how different following iterations will be from the current closest image is determined by a user-selected mutation rate, which allows for the program to differ as much or as little from the current minimum value accordingly.</p>
+                <p>One noteworthy deviation from this implementation can be observed in the color image, in which the program can no longer simply mutate within the range of 0 - 255 (Black - White). In this instance,the program instead assigns each line within the image a random color value that is picked from the inspiring image. This allows for a color range that still reacts to mutation values, as the amount of variation in these referential coordinates changes based on the same input. </p>
+            </div>
+
+			<div class="minor-section">
+				<h2>Reflection</h2>
+                <p>Campbell Hunter: When it came to practical implementation, this project was honestly fairly easy in comparison to some of the other projects we’ve worked on in this class. I’d say that the firmer guidelines, along with increased access to example code, made this project a lot more straightforward in respect to both knowing where to start and understanding what your groupmates are working on. The only real issue that I encountered in this project was simply communicating with my group, which I think was partially due to the fact that we were provided an implementation that allowed us to skip the glitch step almost entirely, meaning that the coding we were doing was less instantly available between groupmates. Still, super happy with the end product!</p>
+				<p>Phineas Asmelash: During this project, I found myself getting carried away as I began tweaking the parameters in the boilerplate code to see how they would affect the final outcome. I was mesmerized by how everything gradually came together from what initially seemed like randomness. It was also fascinating to explore other people’s implementations of the evolutionary algorithm. Overall, I’m quite happy with the results. However, I recognize that I could improve communication with my teammates—initiating discussions earlier and setting clear plans and roles for each member might lead to better collaboration in future projects.</p>
+                <p>Vivian Allen: The implementation of this project felt much simpler in comparison to the last, though that was expected according to the experiment instruction slides. I did decide to try to figure out how to implement color into the image, which was admittedly a little maddening, but it was a fun challenge, and I am very proud of how everything came together. Do wish I had communicated a bit better with my group, having to share the files over GitHub rather than Glitch was cumbersome, but still worked. Also, I still want to mess with some of the images some more, but I’ll probably end up losing sleep.</p>
+			</div>
+
+		</section>
+		<nav id="links" class="minor-section">
+			<!-- Put link back to homepage here. -->
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+            </ul>
+		</nav>
+	</main>
+</body>
+</html>
