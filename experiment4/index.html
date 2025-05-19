@@ -25,6 +25,9 @@
 	<!-- Use me for a JavaScript OOP Project -->
 	<!-- <script type="text/javascript" src="./js/project.js" DEFER></script> -->
 	<!-- Use me for a p5.js project -->
+	<script type="text/javascript" src="./js/xxhash.min.js" DEFER></script>
+	<script type="text/javascript" src="./js/Tile.js" DEFER></script>
+	<script type="text/javascript" src="./js/Teal.js" DEFER></script>
 	<script type="text/javascript" src="./js/sketch.js" DEFER></script>
 </head>
 <body>
@@ -35,35 +38,39 @@
 			<h1>Experiment 04 - Infinite Worlds</h1>
 
 			<div class="minor-section">
-				<button id="reseedButton">
-					reseed
-				</button>
-				<span id="seedReport"></span><br>
-				<span id="canvasContainer" style="margin: 10px;"></span>
-				<span id="canvasContainerTwo" style="margin: 10px;"></span><br>
+				<span id="canvasContainer" style="margin: 10px; width: 100px; height: 100px;"></span>
+				<span id="canvasContainerTwo" style="margin: 10px; width: 100px; height: 100px;"></span><br>
+				<span id="labelContainer" style="margin: 10px;"></span>
+				<span id="labelContainerTwo" style="margin: 10px;"></span>
 				<!-- <span id="canvasContainerThree" style="margin: 10px;"></span><br> -->
     			<!-- <textarea cols="20" rows="20" id="asciiBox" style="opacity: 0.5; letter-spacing: 1ex; width: 320px; margin: 10px; font-family: monospace;"></textarea> -->
 				<!-- <textarea cols="20" rows="20" id="asciiBoxTwo" style="opacity: 0.5; letter-spacing: 1ex; width: 320px; margin: 10px; font-family: monospace;"></textarea> -->
 				<!-- <textarea cols="20" rows="20" id="asciiBoxThree" style="opacity: 0.5; letter-spacing: 1ex; width: 320px; margin: 10px; font-family: monospace;"></textarea> -->
 			</div>
 
+			<!-- <div class="minor-section">
+				<div class="image-wrapper">
+					<img src="img/dopple.jpg">
+				</div>
+			</div> -->
+
 			<div class="minor-section">
 				<h2>Description</h2>
-				<p>In this project, we use a generative context-based map creator that stores map values in the form of a string-grid. By taking into account what tiles were placed next to each other, we were able to add tile interactions like walls.</p>
-				<p>For dungeon generation, the map is also populated by a number of extra chambers, which are then connected to the central chamber using a simple pathing algorythem. For the overworld map, all features are generated based on a simple noise function that acts like a heightmap for the final product.</p>
+				<p>Our worlds are largely based off of Truchet tiles which can be used to create interesting patterns based off of the negative space in between each colored region. Our first world is utilizing circular paths that interconnect and are entirely monochrome. The second is utilizing right triangles that occupy different sections and angles of their tiles to create their negative space patterns. </p>
 			</div>
 
 			<div class="minor-section">
 				<h2>Technical</h2>
-				<p>The maping model used allows the user to directly edit the map that had been gererated, allowing for real-time feedback. It should be noted that, due to the way that the program checks for wall geometry, editing in non-standard floor plans may result in a buggy final render.</p>
-				<p>The adjacency algorhythm is rather simple, wherein it takes the four ajacent tiles, and encodes whether they are the target tile into the output using a four-digit binary number. This allows for the wall, shore-line, and loot generation to act the way that it does.</p>
-				<p>The pathing algorhythm that is used to ensure all dungeon rooms are connected is super basic, simply traveling in two straight lines to go from the new room's geometric center to that of the main hall. If you're curious, you can see any generated paths as denoted by a '+' on the map.</p>
+				<p>The first world has each tile randomly assigned a type utilizing the hash provided in the example, and that type is then utilized to determine how they interconnect with the surround tile types. A tile either has black circles drawn in its corners, or white circles. When the tiles check their surroundings to determine how to be drawn they create their circular patterns. </p>
+				<p>The second world has each tile randomly assigned a type also utilizing the hash, and each type also has a unique color. The types decide which corner of the tile they should be drawn in. As a result of not basing any logic on the tiles surroundings, the patterns are less organic and far more random to the eye.</p>
+				<p>Additionally, both worlds have an animated avatar that is used to traverse the infinite terrain and can follow footprints that are randomly generated on tiles.</p>
 			</div>
 
 			<div class="minor-section">
 				<h2>Reflection</h2>
-				<p>Campbell Hunter: I feel like I did a fairly good job with the assignment reletive to what I was looking to achieve. I'm honestly pretty proud of the way I implemented all of the logistical elements, and I'm hoping to work with something simular in the future so that I can get some more practice in this area. My only failing is that, while it does work as is, there are still some incongruencies between the text map and the rendered map due to me checking for chests and gems where walls should be. </p>
-				<p>Phineas Asmelash: Learning about bitmasking was a fun experience in this project. I think I did pretty well with this project. Especially with the variety of tilesets I integrated into the scene. Playing around with those different textures was nice, but I think I could have been more methodical with how I approached indexing the tilemap. It took me a while to figure out that I can just put a grid overlay on the tilemap to find the indexing of each tile element in the tile map, so that was some wasted time being inefficient. In the future, I would like to improve two things about this project. The first is to abstract the math away from the codebase by decoupling the long, mathy lines of code and putting them in their own function. This would especially help with the readability of the generateGrid() function. The second one is to come up with a more cohesive set of tilesets to create an overworld tile map to further improve the aesthetics of the project.</p>
+				<p>Campbell Hunter: While the original opus of this assignment was just us messing around with different generative tiling patterns, once we found some inspiration through those patterns, I honestly had a ton of fun. This was the first assignment that actually gave me an opportunity to bust out Procreate and draw up some spritesheets, so that alone is a huge plus. Other than that, the manner in which we collaborated on this assignment was slightly more hectic, but it felt like the final product was made larger simply because getting there took a bit more detective work (Good lord do we all need to start commenting out our code.) Whatever the case, I love my little reporter man, and I’m looking forward to working more in the realm of design and art when it comes to this course.</p>
+				<p>Phineas Asmelash: Figuring out how to make the arc based truchet tiles to my liking was a big challenge. Especially when it came to shading within a closed shape. I was thinking of maybe compromising and not fully implement the shading of the truchet tiles but as I was about to move on with the project I was able to figure it out with the help of this medium article. I feel like I got lost in the creative process that I didn’t get to have enough time for the other aspects of the project (like glitch and portfolio integration). It was really nice to see my effort pay off in a different way than I’m used to when it comes to coding. What I mean by that is usually the pay off when it comes to programming is when your code finally compiles or works in the way you want it to, but with this class it’s purely visual which is a welcome change of pace. However, I need to readust sometimes and figure out when something is worth more of my effort and when it’s time to focus on something else.</p>
+				<p>Vivian Allen: I was mostly in charge of porting over Phineas’s code basis for the black and white, and triangle visuals over into the infinite generating glitch example. This is the first time I have had to significantly refactor code, and it was an interesting experience. Admittedly I was bashing my head against the wall for the first black and white world and thankfully Campbell figured it out for me, and using his work to help refactor the triangle world made a world of difference in my understanding of how to properly refactor. Other than that, we definitely need to comment more on code, so much time was spent trying to figure out what everything did or meant, and I did not help with that unfortunately. All experience for the next time though.</p>
 			</div>
 
 		</section>
